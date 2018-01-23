@@ -29,6 +29,9 @@ namespace api.commons
 
         public Training GetTraining()
         {
+            //TODO added two empty trainingtasks for testing
+            tasksList.Add(new TrainingTask());
+            tasksList.Add(new TrainingTask());
             training.TrainingTasks = tasksList;
             return training;
         }

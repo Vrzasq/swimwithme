@@ -18,19 +18,10 @@ namespace api.Controllers
         }
 
         [HttpGet]
-        public JsonResult GetTraining(TrainingDifficulties difficulty, int volume)
+        public JsonResult GetTraining(TrainingDifficulties difficulty, int volume = 0)
         {
             TrainingCreator trainingCreator = new TrainingCreator();
             trainingCreator.SetVolume(difficulty, volume);
-            Training training = trainingCreator.GetTraining();
-            return Json(training);
-        }
-
-        [HttpGet]
-        public JsonResult GetTraining(TrainingDifficulties difficulty)
-        {
-            TrainingCreator trainingCreator = new TrainingCreator();
-            trainingCreator.SetVolume(difficulty);
             Training training = trainingCreator.GetTraining();
             return Json(training);
         }
