@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using api.commons;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -19,13 +20,19 @@ namespace api.Controllers
         [HttpGet]
         public JsonResult GetTraining(TrainingDifficulties difficulty, int volume)
         {
-            return Json("GetTraining 2 params");
+            TrainingCreator trainingCreator = new TrainingCreator();
+            trainingCreator.SetVolume(difficulty, volume);
+            Training training = trainingCreator.GetTraining();
+            return Json(training);
         }
 
         [HttpGet]
         public JsonResult GetTraining(TrainingDifficulties difficulty)
         {
-            return Json("GetTraining 1 param");
+            TrainingCreator trainingCreator = new TrainingCreator();
+            trainingCreator.SetVolume(difficulty);
+            Training training = trainingCreator.GetTraining();
+            return Json(training);
         }
 
         [HttpGet]

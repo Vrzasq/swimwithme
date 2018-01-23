@@ -12,6 +12,18 @@ namespace api.commons
 {
     public class Training
     {
-        public IEnumerable<TrainingTask> TrainingTasks { get; set; }
+        private IEnumerable<TrainingTask> tasks;
+        public IEnumerable<TrainingTask> TrainingTasks
+        {
+            get => tasks;
+            set
+            {
+                tasks = value;
+                TotalVolume = tasks.Sum(x => x.Volume);
+            }
+        }
+
+        public int CalculatedVolume { get; set; }
+        public int TotalVolume { get; set; }
     }
 }
