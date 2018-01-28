@@ -12,11 +12,8 @@ namespace api.Controllers
 {
     public class TrainingTaskController : Controller
     {
-        private readonly TrainingContext _context;
-
-        public TrainingTaskController(TrainingContext context)
+        public TrainingTaskController()
         {
-            _context = context;
         }
 
         public string TestRouting()
@@ -27,7 +24,7 @@ namespace api.Controllers
         [HttpGet]
         public JsonResult GetTraining(TrainingDifficulties difficulty, int volume = 0)
         {
-            Trainer trainer = new Trainer(_context);
+            Trainer trainer = new Trainer();
             Training training = trainer.MakeTraining(difficulty, volume);
             return Json(training);
         }

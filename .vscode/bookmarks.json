@@ -1,0 +1,27 @@
+{
+	"onDidClearBookmarkEmitter": {},
+	"onDidClearAllBookmarksEmitter": {},
+	"onDidAddBookmarkEmitter": {},
+	"onDidRemoveBookmarkEmitter": {},
+	"onDidUpdateBookmarkEmitter": {},
+	"bookmarks": [
+		{
+			"fsPath": "$ROOTPATH$\\api\\commons\\TrainingCreator.cs",
+			"bookmarks": [
+				31
+			]
+		},
+		{
+			"fsPath": "$ROOTPATH$\\api\\repository\\ITrainingTaskRepository.cs",
+			"bookmarks": [
+				4
+			]
+		},
+		{
+			"fsPath": "$ROOTPATH$\\api\\repository\\TrainingTasksRepository.cs",
+			"bookmarks": [
+				4
+			]
+		}
+	]
+}

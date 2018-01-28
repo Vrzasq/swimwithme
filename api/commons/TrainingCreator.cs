@@ -15,7 +15,6 @@ namespace api.commons
         private Training training;
         private List<TrainingTask> tasksList = new List<TrainingTask>();
         private DifficultyTranslator difficultyTranslator = new DifficultyTranslator();
-        private readonly _context;
 
         public TrainingCreator()
         {
@@ -30,7 +29,7 @@ namespace api.commons
 
         public Training GetTraining()
         {
-            //TODO added two empty trainingtasks for testing
+            //added two empty trainingtasks for testing
             tasksList.Add(new TrainingTask());
             tasksList.Add(new TrainingTask());
             training.TrainingTasks = tasksList;
