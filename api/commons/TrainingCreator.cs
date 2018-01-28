@@ -15,13 +15,14 @@ namespace api.commons
         private Training training;
         private List<TrainingTask> tasksList = new List<TrainingTask>();
         private DifficultyTranslator difficultyTranslator = new DifficultyTranslator();
+        private readonly _context;
 
         public TrainingCreator()
         {
             training = new Training();
         }
 
-        public void SetVolume(TrainingDifficulties difficulty, int volume = 0)
+        public void SetVolume(TrainingDifficulties difficulty, int volume)
         {
             training.CalculatedVolume = GetVolume(difficulty, volume);
         }

@@ -9,6 +9,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using api.commons;
+using Microsoft.EntityFrameworkCore;
+using api.Models;
 
 namespace api
 {
@@ -24,6 +27,7 @@ namespace api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<TrainingContext>(options => options.UseInMemoryDatabase("tasks"));
             services.AddMvc()
                 .AddJsonOptions(options => options.SerializerSettings.Formatting = Formatting.Indented);
         }
@@ -40,6 +44,16 @@ namespace api
             {
                 route.MapRoute("default", "api/{controller}/{action}/{id?}");
             });
+
+            var context = app.ApplicationServices.GetService<TrainingContext>();
+            LoadTestData(context);
+        }
+
+        //TODO prepare csv with test data
+        private static void LoadTestData(TrainingContext context)
+        {
+            context.TrainingTasks.Add(new TrainingTask());
+            context.TrainingTasks.Add(new TrainingTask());
         }
     }
 }
