@@ -5,7 +5,7 @@ namespace api.commons
 {
     public class Trainer
     {
-        public Training MakeTraining(TrainingDifficulties difficulty, int volume = 0)
+        public Training MakeTraining(TrainingDifficulty difficulty, int volume = 0)
         {
             var creator = new TrainingCreator();
             creator.SetVolume(difficulty, volume);

@@ -13,16 +13,13 @@ namespace api.commons
         public int VolumeVariation { get; set; }
 
         public static TrainingBasicVolume Amateur =>
-        new TrainingBasicVolume
-        { BasicVolume = 1500, VolumeVariation = 200 };
+            new TrainingBasicVolume { BasicVolume = 1500, VolumeVariation = 200 };
 
         public static TrainingBasicVolume SemiPro =>
-        new TrainingBasicVolume
-        { BasicVolume = 3000, VolumeVariation = 500 };
+            new TrainingBasicVolume { BasicVolume = 3000, VolumeVariation = 500 };
 
         public static TrainingBasicVolume Pro =>
-        new TrainingBasicVolume
-        { BasicVolume = 5000, VolumeVariation = 700 };
+            new TrainingBasicVolume { BasicVolume = 5000, VolumeVariation = 700 };
 
         private int GetVolumevariation(int volume)
         {

@@ -1,4 +1,4 @@
-public enum TrainingDifficulties
+public enum TrainingDifficulty
 {
     Amateur, SemiPro, Pro
 }

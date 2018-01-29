@@ -14,14 +14,13 @@ namespace api.commons
     {
         private Training training;
         private List<TrainingTask> tasksList = new List<TrainingTask>();
-        private DifficultyTranslator difficultyTranslator = new DifficultyTranslator();
 
         public TrainingCreator()
         {
             training = new Training();
         }
 
-        public void SetVolume(TrainingDifficulties difficulty, int volume)
+        public void SetVolume(TrainingDifficulty difficulty, int volume)
         {
             training.CalculatedVolume = GetVolume(difficulty, volume);
         }
@@ -36,13 +35,13 @@ namespace api.commons
             return training;
         }
 
-        private int GetVolume(TrainingDifficulties difficulty, int volume)
+        private int GetVolume(TrainingDifficulty difficulty, int volume)
         {
             TrainingBasicVolume basicVolume;
             if (volume != 0)
                 basicVolume = new TrainingBasicVolume(volume);
             else
-                basicVolume = difficultyTranslator.GetBasicVolume(difficulty);
+                basicVolume = DifficultyTranslator.GetBasicVolume(difficulty);
 
             Random rand = new Random((int)DateTime.Now.Ticks);
             int minVolume = (basicVolume.BasicVolume - basicVolume.VolumeVariation);

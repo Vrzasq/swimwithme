@@ -22,7 +22,7 @@ namespace api.Controllers
         }
 
         [HttpGet]
-        public JsonResult GetTraining(TrainingDifficulties difficulty, int volume = 0)
+        public JsonResult GetTraining(TrainingDifficulty difficulty, int volume = 0)
         {
             Trainer trainer = new Trainer();
             Training training = trainer.MakeTraining(difficulty, volume);

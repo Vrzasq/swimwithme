@@ -9,13 +9,13 @@ namespace api.tests
     public class TrainingTaskControllerTest
     {
         [DataTestMethod]
-        [DataRow(TrainingDifficulties.Pro, 0)]
-        [DataRow(TrainingDifficulties.SemiPro, 0)]
-        [DataRow(TrainingDifficulties.Amateur, 0)]
-        [DataRow(TrainingDifficulties.Amateur, 6000)]
-        [DataRow(TrainingDifficulties.Amateur, 3500)]
-        [DataRow(TrainingDifficulties.Amateur, 1000)]
-        public void TestCalculatedVolume(TrainingDifficulties difficulty, int volume = 0)
+        [DataRow(TrainingDifficulty.Pro, 0)]
+        [DataRow(TrainingDifficulty.SemiPro, 0)]
+        [DataRow(TrainingDifficulty.Amateur, 0)]
+        [DataRow(TrainingDifficulty.Amateur, 6000)]
+        [DataRow(TrainingDifficulty.Amateur, 3500)]
+        [DataRow(TrainingDifficulty.Amateur, 1000)]
+        public void TestCalculatedVolume(TrainingDifficulty difficulty, int volume = 0)
         {
             TrainingTaskController t = new TrainingTaskController();
             Training training = (Training)t.GetTraining(difficulty, volume).Value;
