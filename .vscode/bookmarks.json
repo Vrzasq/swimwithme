@@ -12,15 +12,9 @@
 			]
 		},
 		{
-			"fsPath": "$ROOTPATH$\\api\\repository\\ITrainingTaskRepository.cs",
-			"bookmarks": [
-				6
-			]
-		},
-		{
 			"fsPath": "$ROOTPATH$\\api\\repository\\TrainingTasksRepository.cs",
 			"bookmarks": [
-				8
+				11
 			]
 		}
 	]
