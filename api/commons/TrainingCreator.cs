@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using api.Models;
+using api.repository;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -14,10 +15,16 @@ namespace api.commons
     {
         private Training training;
         private List<TrainingTask> tasksList = new List<TrainingTask>();
+        private ITrainingTaskRepository _ttr;
 
         public TrainingCreator()
         {
             training = new Training();
+        }
+
+        public TrainingCreator(ITrainingTaskRepository ttr) : this()
+        {
+            _ttr = ttr;
         }
 
         public void SetVolume(TrainingDifficulty difficulty, int volume)
@@ -43,7 +50,7 @@ namespace api.commons
             else
                 basicVolume = DifficultyTranslator.GetBasicVolume(difficulty);
 
-            Random rand = new Random((int)DateTime.Now.Ticks);
+            Random rand = new Random((int)(DateTime.Now.Ticks >> 10));
             int minVolume = (basicVolume.BasicVolume - basicVolume.VolumeVariation);
             int maxVolume = basicVolume.BasicVolume + basicVolume.VolumeVariation;
             int randVolume = rand.Next(minVolume, maxVolume);

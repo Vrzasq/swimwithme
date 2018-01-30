@@ -8,13 +8,19 @@
 		{
 			"fsPath": "$ROOTPATH$\\api\\commons\\TrainingCreator.cs",
 			"bookmarks": [
-				30
+				37
 			]
 		},
 		{
 			"fsPath": "$ROOTPATH$\\api\\repository\\TrainingTasksRepository.cs",
 			"bookmarks": [
 				11
+			]
+		},
+		{
+			"fsPath": "$ROOTPATH$\\api.tests\\RepositoryTest.cs",
+			"bookmarks": [
+				4
 			]
 		}
 	]

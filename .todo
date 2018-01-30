@@ -1,6 +1,7 @@
 API:
     ☐ Add repository pattern @repository
         ✔ repository interface @repository @interface @done (2018-1-30 00:01:20)
+        ☐ add test for reposityr GetPreswim @testPreswim
         ☐ repository implementation @repository @implementation
     ☐ Add loading test data from csv
 WEBSITE:

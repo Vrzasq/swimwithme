@@ -7,13 +7,17 @@ using api.commons;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using api.repository;
 
 namespace api.Controllers
 {
     public class TrainingTaskController : Controller
     {
-        public TrainingTaskController()
+        private readonly ITrainingTaskRepository _ttr;
+
+        public TrainingTaskController(ITrainingTaskRepository ttr)
         {
+            _ttr = ttr;
         }
 
         public string TestRouting()

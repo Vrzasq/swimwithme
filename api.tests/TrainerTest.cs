@@ -1,12 +1,13 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using api.Controllers;
 using api.commons;
+using api.repository;
 using Newtonsoft.Json;
 
 namespace api.tests
 {
     [TestClass]
-    public class TrainingTaskControllerTest
+    public class TrainerTest
     {
         [DataTestMethod]
         [DataRow(TrainingDifficulty.Pro, 0)]
@@ -17,8 +18,8 @@ namespace api.tests
         [DataRow(TrainingDifficulty.Amateur, 1000)]
         public void TestCalculatedVolume(TrainingDifficulty difficulty, int volume = 0)
         {
-            TrainingTaskController t = new TrainingTaskController();
-            Training training = (Training)t.GetTraining(difficulty, volume).Value;
+            Trainer t = new Trainer();
+            Training training = t.MakeTraining(difficulty, volume);
             int modulo100 = training.CalculatedVolume % 100;
             Assert.AreEqual(0, modulo100);
         }
