@@ -46,14 +46,7 @@ namespace api
             });
 
             var context = app.ApplicationServices.GetService<TrainingContext>();
-            LoadTestData(context);
-        }
-
-        //TODO prepare csv with test data
-        private static void LoadTestData(TrainingContext context)
-        {
-            context.TrainingTasks.Add(new TrainingTask());
-            context.TrainingTasks.Add(new TrainingTask());
+            MemoryDataLoader.LoadTestData(context);
         }
     }
 }
