@@ -7,6 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using api.tools;
 
 namespace api
 {
@@ -14,7 +15,9 @@ namespace api
     {
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
+            BuildWebHost(args)
+            .InitInMemoryDB()
+            .Run();
         }
 
         public static IWebHost BuildWebHost(string[] args) =>

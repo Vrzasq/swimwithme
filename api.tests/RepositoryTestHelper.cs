@@ -4,20 +4,22 @@ using System.Linq;
 using api.commons;
 using api.Models;
 using api.repository;
+using api.tools;
 using Microsoft.EntityFrameworkCore;
 
 namespace api.tests
 {
     public class RepositoryTestHelper
     {
-        private static TrainignTasksRepository repo;
+        private static TrainingTaskRepository repo;
 
-        public static TrainignTasksRepository GetRepository()
+        public static TrainingTaskRepository GetRepository()
         {
             if (repo != null)
                 return repo;
 
-            repo = new TrainignTasksRepository(CreateContexct());
+            repo = new TrainingTaskRepository(CreateContexct());
+            MemoryDataLoader.LoadTestDataViaRepo(repo);
             return repo;
         }
 
@@ -27,7 +29,6 @@ namespace api.tests
                                 .UseInMemoryDatabase(Guid.NewGuid().ToString())
                                 .Options;
             var context = new TrainingContext(options);
-            MemoryDataLoader.LoadTestData(context);
             return context;
         }
 

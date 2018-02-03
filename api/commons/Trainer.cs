@@ -17,8 +17,9 @@ namespace api.commons
 
         public Training MakeTraining(TrainingDifficulty difficulty, int volume = 0)
         {
-            var creator = new TrainingCreator();
+            var creator = new TrainingCreator(_ttr);
             creator.SetVolume(difficulty, volume);
+            creator.SetPreswim(difficulty);
 
             return creator.GetTraining();
         }

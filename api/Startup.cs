@@ -12,6 +12,8 @@ using Newtonsoft.Json;
 using api.commons;
 using Microsoft.EntityFrameworkCore;
 using api.Models;
+using api.tools;
+using api.repository;
 
 namespace api
 {
@@ -28,13 +30,15 @@ namespace api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<TrainingContext>(options => options.UseInMemoryDatabase("tasks"));
+            services.AddScoped<ITrainingTaskRepository, TrainingTaskRepository>();
             services.AddMvc()
                 .AddJsonOptions(options => options.SerializerSettings.Formatting = Formatting.Indented);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            System.Console.WriteLine(env.EnvironmentName);
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -44,9 +48,6 @@ namespace api
             {
                 route.MapRoute("default", "api/{controller}/{action}/{id?}");
             });
-
-            var context = app.ApplicationServices.GetService<TrainingContext>();
-            MemoryDataLoader.LoadTestData(context);
         }
     }
 }

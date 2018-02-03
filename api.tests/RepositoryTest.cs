@@ -8,15 +8,18 @@ namespace api.tests
     [TestClass]
     public class RepositoryTest
     {
-        [TestMethod]
-        public void TestPreSwim()
+        [DataTestMethod]
+        [DataRow(TrainingDifficulty.Pro, 100)]
+        [DataRow(TrainingDifficulty.Pro, 200)]
+        [DataRow(TrainingDifficulty.Pro, 300)]
+        [DataRow(TrainingDifficulty.Pro, 400)]
+        [DataRow(TrainingDifficulty.SemiPro, 100)]
+        [DataRow(TrainingDifficulty.Amateur, 100)]
+        public void TestPreSwim(TrainingDifficulty difficulty, int volume)
         {
-            var context = new TrainingContext();
-            TrainignTasksRepository rep = new TrainignTasksRepository(context);
-            TrainingTask task = rep.GetPreswim(TrainingDifficulty.Pro, 100);
-            Assert.AreEqual<TrainingTask>(new TrainingTask(), task);
+            TrainingTaskRepository rep = RepositoryTestHelper.GetRepository();
+            TrainingTask task = rep.GetPreswim(difficulty, volume);
+            Assert.AreEqual(volume, task.Volume);
         }
-        // @testPreswim
-        // https://blog.learningtree.com/mock-entity-frameworks-dbcontext-unit-testing/
     }
 }

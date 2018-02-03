@@ -15,7 +15,7 @@ namespace api.commons
     {
         private Training training;
         private List<TrainingTask> tasksList = new List<TrainingTask>();
-        private ITrainingTaskRepository _ttr;
+        private readonly ITrainingTaskRepository _ttr;
 
         public TrainingCreator()
         {
@@ -32,12 +32,16 @@ namespace api.commons
             training.CalculatedVolume = GetVolume(difficulty, volume);
         }
 
+        public void SetPreswim(TrainingDifficulty difficulty)
+        {
+            var preswim = _ttr.GetPreswim(difficulty, 200);
+            tasksList.Add(preswim);
+        }
+
 
         public Training GetTraining()
         {
             //added two empty trainingtasks for testing
-            tasksList.Add(new TrainingTask());
-            tasksList.Add(new TrainingTask());
             training.TrainingTasks = tasksList;
             return training;
         }

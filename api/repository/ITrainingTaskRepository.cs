@@ -9,5 +9,7 @@ namespace api.repository
         TrainingTask GetWarmaup(TrainingDifficulty difficulty, int volume);
         IList<TrainingTask> GetMain(TrainingDifficulty difficulty, int volume);
         TrainingTask GetPostSwim(TrainingDifficulty difficulty, int volume);
+        void AddTask(TrainingTask task);
+        void AddTasks(IEnumerable<TrainingTask> tasks);
     }
 }

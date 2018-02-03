@@ -18,7 +18,8 @@ namespace api.tests
         [DataRow(TrainingDifficulty.Amateur, 1000)]
         public void TestCalculatedVolume(TrainingDifficulty difficulty, int volume = 0)
         {
-            Trainer t = new Trainer();
+            var repo = RepositoryTestHelper.GetRepository();
+            Trainer t = new Trainer(repo);
             Training training = t.MakeTraining(difficulty, volume);
             int modulo100 = training.CalculatedVolume % 100;
             Assert.AreEqual(0, modulo100);

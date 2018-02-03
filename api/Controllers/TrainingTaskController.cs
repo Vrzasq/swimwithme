@@ -20,6 +20,7 @@ namespace api.Controllers
             _ttr = ttr;
         }
 
+        [HttpGet]
         public string TestRouting()
         {
             return "hello xD";
@@ -28,7 +29,7 @@ namespace api.Controllers
         [HttpGet]
         public JsonResult GetTraining(TrainingDifficulty difficulty, int volume = 0)
         {
-            Trainer trainer = new Trainer();
+            Trainer trainer = new Trainer(_ttr);
             Training training = trainer.MakeTraining(difficulty, volume);
             return Json(training);
         }

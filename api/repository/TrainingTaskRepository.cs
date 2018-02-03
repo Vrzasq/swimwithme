@@ -7,15 +7,27 @@ using Microsoft.EntityFrameworkCore;
 
 namespace api.repository
 {
-    public class TrainignTasksRepository : ITrainingTaskRepository
+    public class TrainingTaskRepository : ITrainingTaskRepository
     {
         //@repository @implementation
-        private TrainingContext _contexct;
+        private readonly TrainingContext _contexct;
         private Random random = new Random((int)(DateTime.Now.Ticks >> 10));
 
-        public TrainignTasksRepository(TrainingContext context)
+        public TrainingTaskRepository(TrainingContext context)
         {
             _contexct = context;
+        }
+
+        public void AddTask(TrainingTask task)
+        {
+            _contexct.TrainingTasks.Add(task);
+            _contexct.SaveChanges();
+        }
+
+        public void AddTasks(IEnumerable<TrainingTask> tasks)
+        {
+            _contexct.TrainingTasks.AddRange(tasks);
+            _contexct.SaveChanges();
         }
 
         public IList<TrainingTask> GetMain(TrainingDifficulty difficulty, int volume)
@@ -34,10 +46,10 @@ namespace api.repository
                 volume = 100;
 
             var basicQuery = DifficultyTranslator.GetQueryBasedOnDifficulty(difficulty, _contexct);
-            List<TrainingTask> tasks = basicQuery.Where(task => task.Volume == volume).ToList();
+            List<TrainingTask> tasks = basicQuery.Where(task => task.Volume == volume && task.IsPreswim).ToList();
 
             if (tasks.Count == 0)
-                return new TrainingTask();
+                throw new Exception("No preswim tasks available");
 
             int taskIndex = random.Next(0, tasks.Count);
 
