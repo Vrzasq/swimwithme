@@ -32,6 +32,7 @@ namespace api.commons
             training.CalculatedVolume = GetVolume(difficulty, volume);
         }
 
+        //@preswim
         public void SetPreswim(TrainingDifficulty difficulty)
         {
             var preswim = _ttr.GetPreswim(difficulty, 200);
@@ -41,7 +42,6 @@ namespace api.commons
 
         public Training GetTraining()
         {
-            //added two empty trainingtasks for testing
             training.TrainingTasks = tasksList;
             return training;
         }

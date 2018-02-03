@@ -1,8 +1,9 @@
 API:
-    ☐ Add repository pattern @repository
+    ✔ Add repository pattern @repository @done (2018-2-3 23:56:57)
         ✔ repository interface @repository @interface @done (2018-1-30 00:01:20)
-        ☐ add test for reposityr GetPreswim @testPreswim
-        ☐ repository implementation @repository @implementation
-    ☐ Add loading test data from csv
+        ✔ add test for reposityr GetPreswim @testPreswim @done (2018-2-3 23:56:39)
+        ✔ repository implementation @repository @implementation @done (2018-2-3 23:56:51)
+    ✔ Add loading test data from csv @done (2018-2-3 23:56:55)
+    ☐ Add calculation for preswim @preswim
 WEBSITE:
 MOBILE APP:
