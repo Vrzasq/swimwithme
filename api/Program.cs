@@ -16,7 +16,6 @@ namespace api
         public static void Main(string[] args)
         {
             BuildWebHost(args)
-            .InitInMemoryDB()
             .Run();
         }
 

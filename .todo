@@ -4,6 +4,7 @@ API:
         ✔ add test for reposityr GetPreswim @testPreswim @done (2018-2-3 23:56:39)
         ✔ repository implementation @repository @implementation @done (2018-2-3 23:56:51)
     ✔ Add loading test data from csv @done (2018-2-3 23:56:55)
+    ✔ add sqlite db support for testing @done (2018-2-4 10:17:34)
     ☐ Add calculation for preswim @preswim
 WEBSITE:
 MOBILE APP:

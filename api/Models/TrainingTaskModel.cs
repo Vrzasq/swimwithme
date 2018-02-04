@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -9,8 +11,10 @@ using Newtonsoft.Json.Serialization;
 
 namespace api.Models
 {
+    [Table("task")]
     public class TrainingTask
     {
+        [Key]
         public int ID { get; set; }
         public string Content { get; set; }
         public int Volume { get; set; }

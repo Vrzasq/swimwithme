@@ -12,6 +12,7 @@ namespace api.tests
     public class RepositoryTestHelper
     {
         private static TrainingTaskRepository repo;
+        private static string connectionString = "Data Source=C:/Data/Development/swimwithme/api.tests/test_data/local.db;";
 
         public static TrainingTaskRepository GetRepository()
         {
@@ -19,14 +20,13 @@ namespace api.tests
                 return repo;
 
             repo = new TrainingTaskRepository(CreateContexct());
-            MemoryDataLoader.LoadTestDataViaRepo(repo);
             return repo;
         }
 
         private static TrainingContext CreateContexct()
         {
             var options = new DbContextOptionsBuilder<TrainingContext>()
-                                .UseInMemoryDatabase(Guid.NewGuid().ToString())
+                                .UseSqlite(connectionString)
                                 .Options;
             var context = new TrainingContext(options);
             return context;

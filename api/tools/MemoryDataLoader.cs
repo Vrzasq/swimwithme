@@ -12,7 +12,7 @@ namespace api.tools
         public static void LoadTestDataViaRepo(ITrainingTaskRepository repository)
         {
             CsvLoader loader = new CsvLoader();
-            var l = loader.GetData<TrainingTask, InMemoryTaskBuilder>(@"C:\Data\Development\swimwithme\api.tests\test_data\test_task_data.csv");
+            var l = loader.GetData<TrainingTask, InMemoryTaskBuilder>(@"C:\Data\Development\swimwithme\api.tests\test_data\task.csv");
             repository.AddTasks(l);
         }
     }

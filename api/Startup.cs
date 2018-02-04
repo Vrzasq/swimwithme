@@ -29,7 +29,9 @@ namespace api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<TrainingContext>(options => options.UseInMemoryDatabase("tasks"));
+            var connectionString = Configuration.GetConnectionString("localDB");
+
+            services.AddDbContext<TrainingContext>(options => options.UseSqlite(connectionString));
             services.AddScoped<ITrainingTaskRepository, TrainingTaskRepository>();
             services.AddMvc()
                 .AddJsonOptions(options => options.SerializerSettings.Formatting = Formatting.Indented);
