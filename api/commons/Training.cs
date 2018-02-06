@@ -25,5 +25,6 @@ namespace api.commons
 
         public int CalculatedVolume { get; set; }
         public int TotalVolume { get; set; }
+        public TrainingDifficulty Difficulty { get; set; }
     }
 }

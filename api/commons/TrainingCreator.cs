@@ -13,6 +13,7 @@ namespace api.commons
 {
     public class TrainingCreator
     {
+        Random rand = new Random((int)(DateTime.Now.Ticks >> 10));
         private Training training;
         private List<TrainingTask> tasksList = new List<TrainingTask>();
         private readonly ITrainingTaskRepository _ttr;
@@ -22,20 +23,27 @@ namespace api.commons
             training = new Training();
         }
 
+
         public TrainingCreator(ITrainingTaskRepository ttr) : this()
         {
             _ttr = ttr;
         }
+
+        public void SetDifficulty(TrainingDifficulty difficulty)
+        {
+            training.Difficulty = difficulty;
+        }
+
 
         public void SetVolume(TrainingDifficulty difficulty, int volume)
         {
             training.CalculatedVolume = GetVolume(difficulty, volume);
         }
 
-        //@preswim
-        public void SetPreswim(TrainingDifficulty difficulty)
+        public void SetPreswim(TrainingDifficulty difficulty, int maxRange = 0)
         {
-            var preswim = _ttr.GetPreswim(difficulty, 200);
+            int volume = GetPreswimVolume(difficulty, maxRange);
+            var preswim = _ttr.GetPreswim(difficulty, volume);
             tasksList.Add(preswim);
         }
 
@@ -46,6 +54,13 @@ namespace api.commons
             return training;
         }
 
+        private int GetPreswimVolume(TrainingDifficulty difficulty, int maxRange)
+        {
+            int[] range = DifficultyTranslator.GetPreswimRange(difficulty, (maxRange / 100));
+            int volume = rand.Next(range[0], range[1] + 1);
+            return volume * 100;
+        }
+
         private int GetVolume(TrainingDifficulty difficulty, int volume)
         {
             TrainingBasicVolume basicVolume;
@@ -54,9 +69,8 @@ namespace api.commons
             else
                 basicVolume = DifficultyTranslator.GetBasicVolume(difficulty);
 
-            Random rand = new Random((int)(DateTime.Now.Ticks >> 10));
             int minVolume = (basicVolume.BasicVolume - basicVolume.VolumeVariation);
-            int maxVolume = basicVolume.BasicVolume + basicVolume.VolumeVariation;
+            int maxVolume = basicVolume.BasicVolume + basicVolume.VolumeVariation + 100;
             int randVolume = rand.Next(minVolume, maxVolume);
             int multi = randVolume / 100;
             return multi * 100;
