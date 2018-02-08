@@ -4,12 +4,5 @@
 	"onDidAddBookmarkEmitter": {},
 	"onDidRemoveBookmarkEmitter": {},
 	"onDidUpdateBookmarkEmitter": {},
-	"bookmarks": [
-		{
-			"fsPath": "$ROOTPATH$\\api\\commons\\TrainingCreator.cs",
-			"bookmarks": [
-				41
-			]
-		}
-	]
+	"bookmarks": []
 }

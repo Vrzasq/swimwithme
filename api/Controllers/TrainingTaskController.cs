@@ -27,23 +27,17 @@ namespace api.Controllers
         }
 
         [HttpGet]
-        public JsonResult GetTraining(TrainingDifficulty difficulty, int volume = 0)
+        public JsonResult GetTraining(TrainingDifficulty diff, int vol = 0, string l = "pl")
         {
             Trainer trainer = new Trainer(_ttr);
-            Training training = trainer.MakeTraining(difficulty, volume);
+            Training training = trainer.MakeTraining(diff, vol);
             return Json(training);
         }
 
         [HttpGet]
-        public JsonResult GetSpecyficTraining(int[] taskId)
+        public JsonResult GetSpecyficTraining(int[] id, string l = "pl")
         {
-            List<int> test = new List<int>();
-            for (int i = 0; i < taskId.Length; i++)
-            {
-                test.Add(taskId[i]);
-            }
-
-            return Json(test);
+            return Json(id);
         }
     }
 }

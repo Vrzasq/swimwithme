@@ -35,6 +35,7 @@ namespace api
             services.AddScoped<ITrainingTaskRepository, TrainingTaskRepository>();
             services.AddMvc()
                 .AddJsonOptions(options => options.SerializerSettings.Formatting = Formatting.Indented);
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,9 +47,14 @@ namespace api
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+
             app.UseMvc(route =>
             {
-                route.MapRoute("default", "api/{controller}/{action}/{id?}");
+                route.MapRoute("default", "api/{controller}/{action}/{difficulty?}");
             });
         }
     }

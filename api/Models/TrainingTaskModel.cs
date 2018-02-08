@@ -30,5 +30,6 @@ namespace api.Models
         public bool HasPads { get; set; }
         public bool HasFins { get; set; }
         public bool HasCups { get; set; }
+        public string Lang { get; set; }
     }
 }
