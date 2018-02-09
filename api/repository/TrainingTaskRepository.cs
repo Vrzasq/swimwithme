@@ -18,6 +18,11 @@ namespace api.repository
             _contexct = context;
         }
 
+        public TrainingTask GetTaskById(int id)
+        {
+            return _contexct.TrainingTasks.Find(id);
+        }
+
         public void AddTask(TrainingTask task)
         {
             _contexct.TrainingTasks.Add(task);
@@ -66,5 +71,6 @@ namespace api.repository
         {
             throw new System.NotImplementedException();
         }
+
     }
 }

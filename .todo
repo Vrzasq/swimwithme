@@ -9,6 +9,8 @@ API:
     ✔ Add CORS @done (2018-2-8 23:55:09)
     ✔ Add pl / en @done (2018-2-9 00:00:36)
     ☐ add pl / en support for queries
+    ✔ add possibility too create specyfic training @done (2018-2-9 22:41:23)
+    ☐ add shareUrl
     ☐ Take care of warmup
     ☐ Add main task algorithm and calculations
     ☐ Add cooldown

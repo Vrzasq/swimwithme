@@ -47,6 +47,21 @@ namespace api.commons
             tasksList.Add(preswim);
         }
 
+        public Training GetSpecyficTraining(TrainingDifficulty difficulty, int[] id)
+        {
+            for (int i = 0; i < id.Length; i++)
+            {
+                var task = _ttr.GetTaskById(id[i]);
+                if (task != null)
+                    tasksList.Add(task);
+            }
+
+            training.TotalVolume = tasksList.Sum(x => x.Volume);
+            training.TrainingTasks = tasksList;
+            training.Difficulty = difficulty;
+            return training;
+        }
+
 
         public Training GetTraining()
         {

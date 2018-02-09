@@ -24,5 +24,11 @@ namespace api.commons
 
             return creator.GetTraining();
         }
+
+        public Training MakeSpecyficTraining(TrainingDifficulty difficulty, int[] id)
+        {
+            var creator = new TrainingCreator(_ttr);
+            return creator.GetSpecyficTraining(difficulty, id);
+        }
     }
 }
