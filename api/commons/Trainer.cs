@@ -7,12 +7,18 @@ namespace api.commons
     public class Trainer
     {
         private readonly ITrainingTaskRepository _ttr;
+        private readonly string lang;
 
         public Trainer() { }
 
         public Trainer(ITrainingTaskRepository ttr)
         {
             _ttr = ttr;
+        }
+
+        public Trainer(ITrainingTaskRepository ttr, string lang = "pl") : this(ttr)
+        {
+            this.lang = lang;
         }
 
         public Training MakeTraining(TrainingDifficulty difficulty, int volume = 0)

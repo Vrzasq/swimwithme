@@ -17,6 +17,7 @@ namespace api.commons
         private Training training;
         private List<TrainingTask> tasksList = new List<TrainingTask>();
         private readonly ITrainingTaskRepository _ttr;
+        private readonly string lang;
 
         public TrainingCreator()
         {
@@ -27,6 +28,11 @@ namespace api.commons
         public TrainingCreator(ITrainingTaskRepository ttr) : this()
         {
             _ttr = ttr;
+        }
+
+        public TrainingCreator(ITrainingTaskRepository ttr, string lang) : this(ttr)
+        {
+            this.lang = lang;
         }
 
         public void SetDifficulty(TrainingDifficulty difficulty)
@@ -43,7 +49,7 @@ namespace api.commons
         public void SetPreswim(TrainingDifficulty difficulty, int maxRange = 0)
         {
             int volume = GetPreswimVolume(difficulty, maxRange);
-            var preswim = _ttr.GetPreswim(difficulty, volume);
+            var preswim = _ttr.GetPreswim(difficulty, volume, lang);
             tasksList.Add(preswim);
         }
 

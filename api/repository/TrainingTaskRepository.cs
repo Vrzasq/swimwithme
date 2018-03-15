@@ -35,28 +35,33 @@ namespace api.repository
             _contexct.SaveChanges();
         }
 
-        public IList<TrainingTask> GetMain(TrainingDifficulty difficulty, int volume)
+        public IList<TrainingTask> GetMain(TrainingDifficulty difficulty, int volume, string lang)
         {
             throw new System.NotImplementedException();
         }
 
-        public TrainingTask GetPostSwim(TrainingDifficulty difficulty, int volume)
+        public TrainingTask GetPostSwim(TrainingDifficulty difficulty, int volume, string lang)
         {
             throw new System.NotImplementedException();
         }
 
-        public TrainingTask GetPreswim(TrainingDifficulty difficulty, int volume)
+        public TrainingTask GetPreswim(TrainingDifficulty difficulty, int volume, string lang)
         {
             if (volume < 100)
                 volume = 100;
 
             var basicQuery = DifficultyTranslator.GetQueryBasedOnDifficulty(difficulty, _contexct);
-            List<TrainingTask> tasks = basicQuery.Where(task => task.Volume == volume && task.IsPreswim).ToList();
+            List<TrainingTask> tasks =
+                        basicQuery
+                        .Where(task => task.Volume == volume 
+                                        && task.IsPreswim
+                                        && task.Lang == lang)
+                        .ToList();
 
             if (tasks.Count == 0)
             {
                 basicQuery = DifficultyTranslator.GetQueryBasedOnDifficulty(difficulty, _contexct);
-                tasks = basicQuery.Where(task => task.IsPreswim).ToList();
+                tasks = basicQuery.Where(task => task.IsPreswim && task.Lang == lang).ToList();
             }
 
             if (tasks.Count == 0)
@@ -67,7 +72,7 @@ namespace api.repository
             return tasks[taskIndex];
         }
 
-        public TrainingTask GetWarmaup(TrainingDifficulty difficulty, int volume)
+        public TrainingTask GetWarmaup(TrainingDifficulty difficulty, int volume, string lang)
         {
             throw new System.NotImplementedException();
         }

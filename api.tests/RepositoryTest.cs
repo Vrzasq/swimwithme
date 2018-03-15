@@ -9,16 +9,16 @@ namespace api.tests
     public class RepositoryTest
     {
         [DataTestMethod]
-        [DataRow(TrainingDifficulty.Pro, 100)]
-        [DataRow(TrainingDifficulty.Pro, 200)]
-        [DataRow(TrainingDifficulty.Pro, 300)]
-        [DataRow(TrainingDifficulty.Pro, 400)]
-        [DataRow(TrainingDifficulty.SemiPro, 100)]
-        [DataRow(TrainingDifficulty.Amateur, 100)]
-        public void TestPreSwim(TrainingDifficulty difficulty, int volume)
+        [DataRow(TrainingDifficulty.Pro, 100, "pl")]
+        [DataRow(TrainingDifficulty.Pro, 200, "en")]
+        [DataRow(TrainingDifficulty.Pro, 300, "pl")]
+        [DataRow(TrainingDifficulty.Pro, 400, "en")]
+        [DataRow(TrainingDifficulty.SemiPro, 100, "pl")]
+        [DataRow(TrainingDifficulty.Amateur, 100, "en")]
+        public void TestPreSwim(TrainingDifficulty difficulty, int volume, string lang)
         {
             TrainingTaskRepository rep = RepositoryTestHelper.GetRepository();
-            TrainingTask task = rep.GetPreswim(difficulty, volume);
+            TrainingTask task = rep.GetPreswim(difficulty, volume, lang);
             Assert.AreEqual(volume, task.Volume);
         }
     }
