@@ -30,6 +30,12 @@ namespace api.commons
             _ttr = ttr;
         }
 
+        public void CreateShareUrl()
+        {
+            //SharedURLCreation
+            throw new NotImplementedException();
+        }
+
         public TrainingCreator(ITrainingTaskRepository ttr, string lang) : this(ttr)
         {
             this.lang = lang;

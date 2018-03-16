@@ -27,6 +27,7 @@ namespace api.commons
             creator.SetDifficulty(difficulty);
             creator.SetVolume(difficulty, volume);
             creator.SetPreswim(difficulty);
+            creator.CreateShareUrl();
 
             return creator.GetTraining();
         }
