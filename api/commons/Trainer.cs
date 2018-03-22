@@ -11,30 +11,26 @@ namespace api.commons
 
         public Trainer() { }
 
-        public Trainer(ITrainingTaskRepository ttr)
+        public Trainer(ITrainingTaskRepository ttr, string lang = "pl")
         {
             _ttr = ttr;
-        }
-
-        public Trainer(ITrainingTaskRepository ttr, string lang = "pl") : this(ttr)
-        {
             this.lang = lang;
         }
 
         public Training MakeTraining(TrainingDifficulty difficulty, int volume = 0)
         {
-            var creator = new TrainingCreator(_ttr);
+            var creator = new TrainingCreator(_ttr, lang);
             creator.SetDifficulty(difficulty);
             creator.SetVolume(difficulty, volume);
             creator.SetPreswim(difficulty);
-            creator.CreateShareUrl();
+            // creator.CreateShareUrl(); need implementation
 
             return creator.GetTraining();
         }
 
         public Training MakeSpecyficTraining(TrainingDifficulty difficulty, int[] id)
         {
-            var creator = new TrainingCreator(_ttr);
+            var creator = new TrainingCreator(_ttr, lang);
             return creator.GetSpecyficTraining(difficulty, id);
         }
     }

@@ -16,7 +16,7 @@ namespace api.tests
         [DataRow(TrainingDifficulty.Amateur, 6000)]
         [DataRow(TrainingDifficulty.Amateur, 3500)]
         [DataRow(TrainingDifficulty.Amateur, 1000)]
-        public void TestCalculatedVolume(TrainingDifficulty difficulty, int volume = 0)
+        public void TestCalculatedVolume(TrainingDifficulty difficulty, int volume)
         {
             var repo = RepositoryTestHelper.GetRepository();
             Trainer t = new Trainer(repo);

@@ -25,20 +25,16 @@ namespace api.commons
         }
 
 
-        public TrainingCreator(ITrainingTaskRepository ttr) : this()
+        public TrainingCreator(ITrainingTaskRepository ttr, string lang) : this()
         {
             _ttr = ttr;
+            this.lang = lang;
         }
 
         public void CreateShareUrl()
         {
             //SharedURLCreation
-            throw new NotImplementedException();
-        }
-
-        public TrainingCreator(ITrainingTaskRepository ttr, string lang) : this(ttr)
-        {
-            this.lang = lang;
+            throw new NotImplementedException("Method: CreateShareUrl");
         }
 
         public void SetDifficulty(TrainingDifficulty difficulty)

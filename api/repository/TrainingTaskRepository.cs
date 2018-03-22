@@ -53,7 +53,7 @@ namespace api.repository
             var basicQuery = DifficultyTranslator.GetQueryBasedOnDifficulty(difficulty, _contexct);
             List<TrainingTask> tasks =
                         basicQuery
-                        .Where(task => task.Volume == volume 
+                        .Where(task => task.Volume == volume
                                         && task.IsPreswim
                                         && task.Lang == lang)
                         .ToList();
@@ -65,7 +65,7 @@ namespace api.repository
             }
 
             if (tasks.Count == 0)
-                throw new Exception($"No preswim tasks available for diffculty : {difficulty}, volume : {volume}");
+                throw new Exception($"No preswim tasks available for [diffculty : {difficulty}, volume : {volume}]");
 
             int taskIndex = random.Next(0, tasks.Count);
 
