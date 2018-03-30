@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using api.Models;
 using api.repository;
@@ -18,6 +19,7 @@ namespace api.commons
         private List<TrainingTask> tasksList = new List<TrainingTask>();
         private readonly ITrainingTaskRepository _ttr;
         private readonly string lang;
+        private string baseUrl = "https://lolcalhost:8080/api/TrainingTask/GetSpecyficTraining";
 
         public TrainingCreator()
         {
@@ -33,8 +35,13 @@ namespace api.commons
 
         public void CreateShareUrl()
         {
-            //SharedURLCreation
-            throw new NotImplementedException("Method: CreateShareUrl");
+            var sb = new StringBuilder();
+
+            foreach (var task in training.TrainingTasks)
+                sb.Append($"&id={task.ID}");
+
+            training.ShareUrl =
+                $"{baseUrl}?diff={training.Difficulty.ToString()}{sb.ToString()}";
         }
 
         public void SetDifficulty(TrainingDifficulty difficulty)

@@ -35,7 +35,7 @@ namespace api.Controllers
         }
 
         [HttpGet]
-        public JsonResult GetSpecyficTraining(TrainingDifficulty diff, int[] id, string l = "pl")
+        public JsonResult GetSpecyficTraining(TrainingDifficulty diff, int[] id)
         {
             Trainer trainer = new Trainer(_ttr);
             Training training = trainer.MakeSpecyficTraining(diff, id);

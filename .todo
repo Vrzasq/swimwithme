@@ -10,7 +10,8 @@ API:
     ✔ Add pl / en @done (2018-2-9 00:00:36)
     ✔ add pl / en support for queries @done (2018-3-15 14:52:47)
     ✔ add possibility too create specyfic training @done (2018-2-9 22:41:23)
-    ☐ add shareUrl
+    ✔ add shareUrl @done (2018-3-30 17:16:45)
+    ☐ test shared URL
     ☐ Take care of warmup
     ☐ Add main task algorithm and calculations
     ☐ Add cooldown
